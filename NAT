@@ -1,0 +1,24 @@
+Dynamic NAT (Network Address Translation) Configuration
+  1. ip nat inside (int config)
+  2. ip nat outside (int config)
+  3. ACL configuration for packets entering inside interfaces
+  4. ip nat pool [name] [first-address] [last-address] netmask [subnet-mask] (global config) -> pool of public registred IP addresses
+  5. ip nat inside source list [acl-number] pool [pool-name] (fglobal config) -> enable dynamic NAT
+  
+PAT (Port Address Translation) Configuration
+  1. ip nat inside (int config)
+  2. ip nat outside (int config)
+  3. configure ACL  for packets entering inside interfaces
+  4. ip nat inside source list [acl-number] interface [type/number] overload
+
+ONLY DIFFERENCE BETWEEN DYNAMIC NAT AND PAT IS "overload"
+
+Biggest NAT troublshooting issues
+  1. Reversed inside and outside
+  2. static NAT -check lists the inside local address first and inside global IP address second
+  3. Dynamic NAT (ACL) ensure ACL configured matches host packets
+  4. Dynamic NAT (pool)  if not enough IP Addresses use PAT
+  5. PAT - Dont forget OVERLOAD in configuration
+  6. ACL - IOS Processes ACL before NAT, 
+  7. User traffic required -> NAT needs user trafic
+  8. IPV4 routing
