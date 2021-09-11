@@ -1,0 +1,32 @@
+QoS  - manages what happens  to a packet when it enters a switch
+DIKTA
+1. a,b,c
+2. a,d
+3. a,b,d
+4. c,b
+5. b,c
+6. c,d
+
+QoS manages
+  1. Bandwith
+    a. Speed of the link, through capacity of each type of traffic
+  2. Delay
+    a. One way - time between sending one packet and that same packet arriving at the destination
+    b. Round-trip - Counts the one-way delay plus the time for the receiver to send back a packet
+  3. Jitter
+    a. variation in one-way delay between consecutive packets send by the same application
+  4. Loss
+    a. number of lost messages, typically as a percentage\
+    
+ Types of traffic
+  a. Voice  - affected by delay, jitter, and loss, not so much bandwith though
+    1. Delay (one-way): 150 ms or less
+    2. Jitter 30 ms or less
+    3. Loss: 1% or less
+  b. Voice  - affected by delay, jitter, and loss, not so much bandwith though
+   
+ 
+ Quality of Experience QoE - users' perception of their use of the application on the network
+  
+ 
+  
