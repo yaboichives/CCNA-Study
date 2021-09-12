@@ -23,10 +23,38 @@ QoS manages
     1. Delay (one-way): 150 ms or less
     2. Jitter 30 ms or less
     3. Loss: 1% or less
-  b. Voice  - affected by delay, jitter, and loss, not so much bandwith though
-   
- 
+  b. Video  - affected by delay, jitter, and loss, not so much bandwith though
+    1. Bandwith - 384kbps to 20 mbps
+    2. Delay (one-way) 200-400 ms
+    3. 30-50 ms
+    4. loss 0.1% - 1%
+
  Quality of Experience QoE - users' perception of their use of the application on the network
   
- 
+Classification and Marking - Classifies packets based on header content and may modify bits in specific header fields.
+  1. Enabled on an interface
+  2. Are directional like ACLs
+    a. entering 
+    b. exiting
+  
+Foward->classify->Queue->Scheduling(prioritization)->Transmit
+
+NBAR- Cisco Network Based Application Recognition - Identifies the differences of importance between applications. Like Amazon video vs cisco video surveillance camera
+
+Marking Fields n- Relies on IPv4's Type of Service (ToS) bye in the IPv4 header
+  1. DSCP - Differentiated Services Code Point
+    a. 6 bit field from IPv6 - Traffic Class byte
+  2. CoS - Class of Service or Priority Code Point or PCP
+    a. 802.1Q header  on the 3rd byte of the 4-byte 802.1Q header. 3 bit field supplying 8 possible values.
+    [Ethernet][802.1Q][Type][Data][/trailer]
+    b. 802.1Q header only exists when 802.1Q Trunking is used on a link
+    
+Trust Boundary - Where the boundary for tursting the current QoS markings starts
+  a. Typically a device that the IT staff controls
+    1. Except for VOIP Phones - Where the phone is the trust boundary so they get good QoS.
+
+DiffServ Suggested marking Values - Makes suggestions about specific DSCP values hoping to create consistent use of DSCP values in all networks. 
+  1. Expedited Fowarding 
+  2. Assured Fowarding
+  3. Class Selector
   
