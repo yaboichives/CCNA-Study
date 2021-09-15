@@ -49,12 +49,83 @@ Marking Fields n- Relies on IPv4's Type of Service (ToS) bye in the IPv4 header
     [Ethernet][802.1Q][Type][Data][/trailer]
     b. 802.1Q header only exists when 802.1Q Trunking is used on a link
     
-Trust Boundary - Where the boundary for tursting the current QoS markings starts
+Trust Boundary - Where the boundary for trusting the current QoS markings starts
   a. Typically a device that the IT staff controls
     1. Except for VOIP Phones - Where the phone is the trust boundary so they get good QoS.
 
 DiffServ Suggested marking Values - Makes suggestions about specific DSCP values hoping to create consistent use of DSCP values in all networks. 
-  1. Expedited Fowarding 
+  1. Expedited Fowarding (EF)
+    a. use for packets that need low latency (delay), low jitter, low loss)
+    b. DSCP value - decimal 46  and an equivalent text name
+    c. Many times used for voice payload packets
+      i. voice calls are made up of voice payload and signaling messages (which dont require low delay because they just set up the call.
+    d. Cisco IP Phones mark voice payload with EF with the value called CS3
   2. Assured Fowarding
+    a. Defines a set of 12 DSCP values meant to be used together.
+      i. 4 seperate queues
+      ii. 3 levels of drop priority within each queue
+      iii. AFXY
+        a. X = queue (1-4)
+        b. Y = drop priority (1-3)
+          1. AF41 = best Queue and best drop
+          2. AF13 = Worst Queue and Worst Drop
   3. Class Selector
+    a. Backwards compatable with IPP 
+      i. DSCP  values have the same first 3 bits as the IPP field with binary 0s for the last 3 bits
+      ii. IPP = 0 CS = CS0 decimal DSCP = 0
+      iii. IPP = 7 CS= CS7 decimal DSCP = 56
+      
+ Guidelines for DSCP Marking Values
+ 1. DSCP EF; Voice payload
+ 2. AF4x: interactive video
+ 3. AF3x: Streaming video
+ 4. AF2x: high priority (low latency) data
+ 5. CS0: Standard Data
+ 
+ Queuing
+  1. Receive -> ingress services -> fowarding -> egress services -> output Queue -> Transmit
+  2. Components
+    a. Classifier
+    b. Queues
+    c. Scheduler
+      i. Prioritization of one queue over another
+  3. Round-Robin Scheduling (prioritization)
+    a. Goes through each Queue taking a certain number of bytes
+    b. Weighting = taking certain percentages of total bandwith from each Queue
+    c. Class-based weighted fair Queuing = CBWFQ
+  4. Low Latency Queuing (LLQ)
+    a. Treats one or more queues as a special priority queue meaning it will always take the next message from one of them. 
+    b. This is for video or voice  so there are no drops. 
+    c. Queue starvation may happen which is why we have policers to limit  amount of traffic in priority  queue.
+    d. Call Admission ?Control tools help limit the amount of traffic the network routes out the link  so that priority queue doesn't discard excess messages
+    
+ Shaping - slows down messages that exceed shaping rate by queuing them 
+  a. you can apply queuing tools like round robin and priority queueing tools like CBWFQ and LLQ
+  b. typically happens before policing
+  c. Time interval - internal logic and how a shaper averages sending at a particular rate 
+    i. typically sends in batches by going as fast as it can and then stoping
+    ii. you can configure the time interval to be better for voice or video packets for them to be steady and within the neccesary parameters. 
+      1. I.E 10 ms time interval for voice and video
+  d. Are enabled on an interface for egress (outing packets)
+ 
+ Policing - Discards or re-marks messages that exceed policying rate
+  a. useful for Service Provider to prevent customers from congesting the WAN Service and affecting all customers.
+  b. May also remark packets letting them still get onto the network 
+  c. Measure traffic rate over time, comparing to the configured Policing rate
+  d. Allows for burst of data after a period of incativity
+  e. Enabled on an interface typically at ingress
+ Commited Information Rate (CIR)
   
+Congestion Avoidance - reduce overall packet loss by premptively discarding some packets used in TCP connections.
+
+TCP windowing
+  1. flow control mechanism = windowing
+    a. Each TCP connection has 2 senders and 2 receivers 
+      i. window gets bigger as more and more data is received with no loss
+      ii. with a loss  data sent is cut in half
+    b. too avoid tail drop (full queue that drops packets) we use congestion avoidance tools
+ 
+ Congestion avoidance - Discard some TCP segments before the Queues fill to avoid tail drop (which would drop even more packets)
+  a. When queue passes the allowed threshold, the tool discards a percentage of the packets like 5 or 10 or 20 percent. 
+  b. If the queue depth passes maximum threshold, tool drops all packets in a "Full Drop"
+  c. Marked packets get  treated differently as well depending on how good they are. 
