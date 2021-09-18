@@ -1,1 +1,15 @@
 First Hop Redundancy Protocol
+ a. the category of protocols that can be used so that the hostts take advantage of redunant routers in a subnet
+ b. redunancy is needed due to single points of failure
+ c. FHRP can make redunant routers act as one router
+  1. All hosts act like they always have with one default router
+  2. Default routers share a virtual IP address in the subment defined by the FHRP
+  3. Hosts use the FHRP virtual IP address as default gateway
+  4. Routers exchange FHRP protocol messages so they both agree as to who does what
+  5. When a router fails the routers use the FHRP to choose which router takes over responsibilities
+3 different FHRP protocols
+  1. HSRP - Hot Standby Router Protocol - Cisco  -Active/standby -Subnet load balancing
+  2. VRRP - Virtual Router Redundancy Protocol - RFC 5798 - Active/standby - Subnet load Balancing
+  3. GLBP - Gateway Load Balancing Protocol - Cisco -Active/active - host load balancing
+  
+  
