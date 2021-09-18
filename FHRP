@@ -12,4 +12,18 @@ First Hop Redundancy Protocol
   2. VRRP - Virtual Router Redundancy Protocol - RFC 5798 - Active/standby - Subnet load Balancing
   3. GLBP - Gateway Load Balancing Protocol - Cisco -Active/active - host load balancing
   
-  
+HSRP - Hot Standby Router Protocol 
+ 1. two or more routers to cooperate all willing to be the default router
+ 2. only one router actively supports the end user traffic
+ 3. Other routers are on standby to take over if problems occur
+ 4. the HSRP active router implements a virtual IP and matching virtual MAC
+ 
+HSRP Failover
+ 1. When failover happens changes occur but not on the hosts, they keep the same default router settings and ARP table does not change because of the virtual MAC staying the same between routers
+ 2. Changes happen on routers and LAN switches
+  a. Standby router will send ethernet frame with virtual MAC, and switches learn as normal and start pointing to the standby router. 
+   i. Above frame ^ is a gratuitous ARP because it sends it without receiving an ARP request. 
+   
+HSRP Load Balancing
+ 1. HSRP can configure to prefer one router as active in one vlan and another router active in anoter vlan to balance traffic. 
+ 2. A different way wold be to configure multiple instances of HSRP in the same subnet (multiple HSRP groups)
