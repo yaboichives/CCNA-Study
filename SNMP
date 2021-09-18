@@ -1,1 +1,48 @@
 Simple Network Managment Protocol
+  1. Applicatrion layer protocol the provides a message format for communication of network info between
+    a. Managers
+    b. Agents
+  2. SNMP Manager - network managment application running on a PC or Server with host typically called a network management station or NMS. 
+  3. SNMP Agents - software running inside each device (router, switch, and so on) iwth knowledge of all the variables on that defvice that descripbe the device's config, status, and counters
+    a. keeps database of vairables. Database is called Managment Information Base or MIB
+  4. SNMP manger uses SNMP protocol to talk with SNMP Agents
+  5. Cisco Prime is an example of SNMP managment products. Cisco IOS has built in MIB. 
+  
+  SNMP Variable Reading and Writing
+    1. NMS typicall y polls the SNMP agent on each device. 
+    2. Can configure or reconfigure devices using MIB if permited
+    3. NMS uses GET messenges to retrieve info from an agent (comes in pairs : Get requests and Get response)
+      1. SNMP Get
+      2. GetNext
+      3. GetBulk
+    4. NMS uses SET messages to write varaible s on an Agent to change config
+    5. Great for network engineers cause they have data on the networks and how they are operating
+      a. Can set up text and email notifications for thresholds being passed. 
+  
+  SNMP Notifications: Traps and Informs
+    1. SNMP agents can initiate communications to the NMS
+      1. Trap
+        a. fire and forget ( no error recover due to using UDP)
+      2. Inform
+        b. uses UDP but has application layer reliablity  added.
+        c. NMS must acknowledge receipt of the infomr or agent will send Inform again. 
+        
+   Management Information Base
+    1. MIB defines variables as an object ID or OID
+      a. OIDs organized based on RFC standards and with vendor proprietary variables
+      b. oID's are organized into a hierachry shown as a tree. 
+      c.  typically an GUI because of complexity. 
+      
+    2. Securing SNMP
+      a. Using ACLs to limit SNMP messages to those from known servers only. 
+      b. Keep the NMS IP the same and configure ACLs to permit packets sourced from the NMS IPs only
+      c. all versions of SNMP  support basic clear-text password mechanism
+      d. cleartext passwords are called SNMP communities both snmp agent and manager need prior knowledge of the same snmp community value called community string
+        a. the get and set messages include the community string value in clear text.
+        b. get messages require Read only communities 
+        c. set messages need Read write communities. 
+      e. SNMPv1 uses communities, SNMPv2 didn't have communities until it turned into SNMPv2c
+      f. SNMPv3 uses modern security. 
+        i. message integrity - confirms whether or not each message has been changed during transit
+        ii. Authenitication - username and password using hashing so its never sent in cleartext
+        iii. Encryption
