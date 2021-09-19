@@ -1,1 +1,49 @@
 File Transport Protocol and Trivial File Transport Protocol
+
+FTP and TFTP are TCP/IP protocols
+
+Managing Cisco IOS images with FTP/ TfFTP
+  1. IOS File System
+    a. cisco uses flash memory instead of hard disk drives because there is less chance for failure
+    b. each physical memory device in a  router gets an IOS file system name
+      i. Opaque - logical internal file systems for convienence of interal functi9ons and commands
+      ii. network - external file systems found on different  types of servers for the convienience of referenc ein different IOS commands
+      iii. Disk - for flash
+      iv. USBFlash - obvious
+      v. NVram - default location of the startup-config file
+  2. Upgrading IOS images
+    1. Get IOS image form cisco.com using http or ftp
+    2. place ios image where the router can reach it, like tftp or ftp servers on the ntetwork or USB flash drive in the router
+    3. issue a copy command from the router copying the file in to flash memory 
+      a. Commands like copy tftp flash
+      b. Verify IOS cod eintegrity using MD5 hash checksum
+        i. command is verify /md5
+  3. Can use tftp or FTP which are not encrypted or SCP which is encrypted
+    a. SCP - Secure Copy Protocol which uses ssh
+    b. FTP - TCP prt 21
+      i. you can Navigate, add/remove directories, list files, and file transfer. 
+      ii. Get = client gets a copy of the file from the server
+      iii. put = client puts a copy on the ftp server
+      iv. two types of tcp connections
+        1. control connecction - used to exchange ftp commands
+        2. Data connection - used for sending and receing data
+      v. two types of FTP modes
+        a. active
+          1. FTP server expects port commands from client and reacts
+          2. good for when client and server on the same network or firewalls will cut of the port commands
+        b. passive
+          1. FTP client ssays its going passive, server chooses a port to listen for new TCP connections and notifies the ftp client 
+          2. ftp client opens the tcp data connection to ip and port leared from server's previous command
+          
+   c. FTP over TLS (FTP Secure) EXPLICIT MODE
+    i. client creates ftp control tcp connection to port 21
+    ii. client intiiates the use of TLS in the control connection with FTP AUTH command
+    iii. user takes action requirting ftp data connection, the client creates and ftp data TCP conneciton to server port 21
+    iv. client intitiattes the use of TLS in the data connection with the FTP AUTH command
+    
+   d. FTP over TLS IMPLICIT MODE
+    i. begins with required tLS connection with not need for an FTP AUTH command using ports 990 for contorl connection and 989 for data connection. 
+    
+   TFTP protocol Basics
+    1. uses UDP port 69 , and added a checksum process to verify file transmission. 
+    2. should only be used for temporary quick file transvfers in a secure enviornment whn data does not have to be secure.  like transfering a file to your laptop . 
