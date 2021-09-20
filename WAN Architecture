@@ -1,1 +1,23 @@
-
+Metro Ethernet
+  1. acts as if the WAN service were created by one Ethernet switch. 
+  2. The service is a Layer 2 service in that the WAN provider fowards Ethernet frames form one customer device to another. 
+  
+Metro Ethernet Physical Design and Topology
+  1. Physical link between the SP and customer is the Access link or Ethernet Access link
+  2. Anything on th elink is called user network interface or UNI
+  3. Service provider promises certain speeds but there network infrastructure and information are hidden to the user. 
+Ethernet WAN services and Topologies
+  a. There are 3 main types of MEF service Types
+    1. Ethernet Line Service or E-Line - point to point - two customers premise equipment (CPE) Devices can exchange Ethernet frames  like a leased line
+      a. Routers would use physical Ethernet interfaces
+      b. The routers would configure IP Addresses in the same subnet as each other
+      c. Their routing protocols would become neighbors and exchange routes
+      d. Point to point EVC or Ethernet Virtual Connection
+      e. Typically use Routers but a swtich is possible because its over ethernet
+    2. Ethernet Lan Service - E-LAN  - Full Mesh - This Service acts like a LAN, in that all devices can send frames to all other devices.
+      a. 
+    3. Ethernet Tree Service E-Tree - Hub and Spoke, partial mesh; point to multi-point - Central site can communicate to a defined set of remote sites, but the remote sites cannot communicate directly. 
+  b. VPWS or Virtual Private Wire Service = E-Line Service
+  c. VPLS or Virtual Private Lan Service = E-LAN Service 
+  d. EoMPLS - Ethernet over MPLS - Service Provider uses MPLS internall to make an Ethernet WAN service. 
+  
