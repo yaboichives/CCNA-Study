@@ -1,1 +1,45 @@
+Campus LAN Topologies
+  1. campus LAN - LAN created to suppor tht edevice s in a building or multiple buildings in close proximity. (liek an office park)
+  2. two -tier campus design (collapsed Core)
+    a. access - switch fowards traffic from user devices and rest of LAN 
+    b. Distibution -Switch fowards traffic between other LAN switches - each access witch connects to at leas on e distribution switch or typically 2 for redundancy
+    c. core-Switch fowards traffic between other LAN switches
+    d. solves the problems of
+      1. connecting end user devices 
+      2. connects the switches with a reasonable number of cables and switch ports by connecting all 40 access switches to 2 distrubutino switches. 
+    e. Topologies
+      1. Star - one central device connects to several others
+      2. full mesh - for any set of network nodes, a design that connects a link between each pair of nodes
+      3. partial mesh - a design that connects a link between some pairs of nodes but not all
+      4. hybrid - combines different topology designs
+    f. 2 Tier campus is a combo of 
+      1. Star (at access layer)
+      2. Partial mesh ( at distribution layer)
+3 tier campus design (core)
+  a. with cores you can provide connectivity to all parts of the LAN  with fewer links between buildings 
+  
+SOHO topology
+  a. most use a mutli in one router with an ethernet switch, wireless access point, a router, and a firewall
 
+
+PoE
+  1. Power Sourcing Equipment (PSE) is the device that supplies DC jpoower over the Ethernet UTP cable to connect to a "powered device"
+  2. good for wireless APs IP video camera and IP phones
+  3. PoE uses autonegotiation messages and watches for return signal levles to see if requires power or not.
+    a. do not supply power on PoE cable port unless negotian identifies a need for power
+    b. use Ethernet autonegotiation techniqes sending low poer signal and monitoring to determine the PoE power Class
+    c. If device is didtified as PD supply power per power class
+    d. Monitor for changes to power class.  using autonegotion and listening for CDP and LLDP 
+    e. If new power class is identified adjust th epower level per that class. 
+cisco inline power - cisco - 7 watts at pse - 2 powered wire pairs
+PoE - 802. 3af - 15 watts at pse - 2 wired pairs
+poE+ - 802.3 at - 30 watts at pse - 2 wired pairs
+UPoE - 802.3bt - 60 watts at pse - 4 wired pairs
+UpoE+ - 802.3bt - 100 watts at pse - 4 wired pairs
+
+when building using PoE think of 
+  1. Powered Devices
+  2. Powered Requirements
+  3. Switch ports
+  4. Switch power supplies
+  5. PoE standards versus actual 
