@@ -55,6 +55,19 @@ Public Cloud
       d. Distribute dUsers
     Cons
       a. Security  - less secure than private WANS
+      
+  3. Private WAN and Internet VPN Access to public Cloud
+    a. Use a VPN
+      i .Cisco has Cloud Services Router - router that runs as a VM in a cloud service to do what routers do including terminating VPNS
+    b. Pros and cons of connecting to cloud with private WANS
+      1. secure due to using MPLS and 
+      2. Wan Service allows for QoS
+      3. Capacity 
+      
+   4. Intercloud exchanges
+    a. Companies that create private networks as a service, 
+      1. INtercloud exchange connects to multiple cloud providers on one side and on the other, the intercloud connects to cloud consumers
+      2. if the customer wants to change providers, the customers WAN doesn't change, but the intercloud exchange asks provider to set up new Private WANS
       b. Capacity
       c. Qoality of Service - more latency
       d. No WAN SLA - Service Level Agreement
