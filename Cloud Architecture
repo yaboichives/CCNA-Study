@@ -1,0 +1,61 @@
+Cloud Architecture
+  1. Requested on-demand
+  2. dynamically scale
+  3. uses a pool of resources
+  4. variety of network access options
+  5. Can be measured and billed back to the user based on usage.
+  6. relies on data centers 
+
+Server Virtualization
+  1. no kvm = keyboard video mouse
+  2. racks of servers in a data center
+  3. Server Virtualization
+    a. Hypervisor
+      i. manages and allocates the host hardware to each vm
+      ii. vm's have virtual NICs or vNIC
+      iii. There are virtual switches
+        1. The vNics and PHysical NICs connect internally to a virtual switch
+        2. Cisco has virtual switches - Nexus 1000VE
+          a. Ports connect to VM's  and can be on its own VLAN or use VLAN Trunking
+          b. Ports connected to physical NICs
+      Vi. Each host is connected to two siwitches at the top of the rack called T:of the Rack switches (ToR)
+      v. Each Tor switch is an access layer switch  
+      vi. Each Tor switch is then cabled to EoR or End of Row switch
+      
+Workflow with a virtualized Data Center
+
+Private Cloud (on Premise)
+  1. Customers can click to choose from the cloud services catalog
+  2. One company owns the tools that create the cloud and employs the people who use the services. 
+  
+Public Cloud
+  1. Public cloud provider offers services, selling those services to consumers in other companies. 
+ 
+ Cloud and the "As a service" Model 
+  1. Infrastructure as a service
+    a. Consumer receivces the use of a VM based on Specified amount of hardware performance/capacity, OS to allocate to the VM
+    b. Like Amazon Web Services
+  2. Software as a Service
+    a. Cloud provider uses VM's to create the service, but they are hidden from the customer.
+    b. Cloud provider licenses, installs, and supports whatever software is required.  
+    c. Examples would be : Appple icloud, google drive, dropbox, emails, exchange
+  3. Platform as a Service
+    a. includes many more softare tools beyond the basic OS, used particularly for Development
+    b. For a developer to be able to write and test code easily 
+    c. 
+     
+ WAN Traffic Paths to reach Cloud Services
+  1. Accessing Public Cloud Services using the Internet
+    a. 
+  2. Pros and Cons with connecting to Public Cloud with the Internet
+    Pros
+      a. Already have internet connnection
+      b. Agility - no need to wate for a private WAN Connection
+      c. Migration - can move from one cloud to another easily
+      d. Distribute dUsers
+    Cons
+      a. Security  - less secure than private WANS
+      b. Capacity
+      c. Qoality of Service - more latency
+      d. No WAN SLA - Service Level Agreement
+      
