@@ -1,0 +1,50 @@
+Data Plane aka fowarding plane
+  a. All the tasks internally done to foward a packet
+Control Plane
+  a. Any action that controls the data plane
+    1. creation of all the tables that the data plane uses to do its job
+      i. ip routing table
+      ii. arp table
+      iii. mac address table
+    2. protocols like
+      i. OSPF
+      ii. EIGRP
+      iii.RIP
+      iV. BGP
+      v. arp
+      vi. IPV6 negighbor discovery protocol (ndp)
+      vii. Switch mac learning
+      iix. stp
+Management Plane
+  a. any action that controls the control plane
+    1. protocols like
+      i. Telnet
+      ii. SSH
+      
+Controllers and Software-Defined Architecture or SDA
+  1. Southbound Interface
+    a. Controller sits at the top and sends directly to network device's dataplanes
+    b. SBI examples
+      1. Openflow
+      2. Opflex
+      3. CLI and SNMP with Cisco APIC-EM
+      4. CLI and SNMP and NETCONF used with Cisco Software Defined Access
+  2. Northbound
+    a. Cointroller gathers information about the network
+    b. Uses API so other programs can talk with it
+      i. REST = Representation State Transfer - can sit on different hosts using http to transfer data over the API
+        1. uses HTTP GET requests but goes to an object on the controller rather than a URL
+        2. controller sends back an HTTP GET respones with the object
+ 
+ Network Programmability and SDN
+  a. OpenDaylight Controller and OpenFlow
+    1. Open Source  and uses linux
+  b. Cisco Applicatioin Centric Infrastructure (ACI)
+    1. Spine and Leafe or Clos network
+      a. Each leaf switch mus=t connect to every spine switch
+      b. Each Spine switch must connect to every leaf switch
+      c. Leaf switches cannot connect to each other
+      d. Spine  switches cannot connect to each other
+      e. Endpoints only connect to leaf switches.
+  c. Cisco APIC Enterprise Module (APIC-EM)
+  
