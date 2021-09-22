@@ -48,3 +48,32 @@ Controllers and Software-Defined Architecture or SDA
       e. Endpoints only connect to leaf switches.
   c. Cisco APIC Enterprise Module (APIC-EM)
   
+Application Centric INfrastructure
+  1. Because Datacenters host applications and need networking specific to the application infrastructure
+  2. ACI's use centralized controller called - Application Policy Infrastructure Controller or (APIC)
+    a. Takes intent (EPGs, Policies) and comptletely changes the operation model away from configuring VLANs, trunks, etherchannels, acls and so on
+    
+Cisco APIC Enterpise Module
+a. offer enterpise SDN using the same switches and routers already installe din networks
+  i. Toplogy maps
+  ii. path trace
+  iii. Plug and Play
+  iV. Easy QoS
+  V. Interacts with management plane via, telnet, ssh or SNMP
+  
+SDN examples
+Traditional Versues Controller-BAsed Networks
+
+Network managment
+  a. Configuration managment
+    1. any feature that changes device configuration with automated configuration managment doing so with software control
+      a. ACI using the APIC controller
+      b. NetCONF/RESTCONF
+      c. Ansible, puppet, chef
+  b. Operational Management
+    1. monitoring, gathering operational data, reporting, and alerting possible issues
+      a. APIC-EM and DNA Center
+   
+  
+  How Automation IMpacts Network Management
+    1. Formalize and define dta models for config and operatin data about networks. 
