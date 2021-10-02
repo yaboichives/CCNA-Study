@@ -1,0 +1,34 @@
+REST-Based APIs
+  1. API = Application programming interface
+    a. Client/server architecture
+      i. app developer makes a REST api - that api is a REST server. Any other app can now make a REST API call (REST Client).
+      ii. REST Api Call sent out, REST api Server sends back data
+    b. Stateless operation
+      i. REST does not record and use information about one API exchange for purpose of subsequent API Exchanges
+    c. Clear statement of cacheable/ uncacheable
+      i. RES APIs require that any resource requested via API mark whether or not a resource is is cacheable or not to improve performance by retriieving resources less often. 
+    d. Uniform interface
+    e. Layerd
+    f. Code-on-demand
+    
+    Software CRUD actions and HTTP Verbs
+      a. CRUD
+        1. C= create - allows client to create new instance sof variables and data structures at the server and initialize their values as kept at the server
+        2. r = Read - allows client to retrieve current value of variable s that exist a tht eserver, stroring a copy of th evariables, structures, and values at the client
+        3. u = update - allows client to change the value of variables that exist at the server
+        4. D = delete - allows the client to delete from the server different instances of data variables
+        
+        Crud verbs - REST (HTTP) Verb
+          1. Create = POST
+          2. Read = GET
+          3. Update = PATCH, PUT
+          4. Delete = DELETE
+          
+    REST Api resource contains a set of relate dvariables, defined byh the API and identified by a URI
+     Data Serialization: Because REST APIs give out data they usually do it in 3 diff types
+      a. JSON
+      b. XML
+      c. YAML
+    
+    Make sure you know JSON
+    
