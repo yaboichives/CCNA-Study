@@ -21,3 +21,34 @@
     5. LISP map server looks in database
     6. LISP map server contacts node listed as the RLOC 
     7. RLOC node informs ingress node where to send the frame
+
+DNA Center
+a. includes a robust norbound REST API and Southbound APIs
+  i. Traditional protocols = telnet, ssh, snmp
+  ii. modern protocols = NETCONF, and RESTCONF
+
+DNA Center as a network managment platform 
+  a. comparing to tradtional network managment (cisco prime infrastructure or PI)
+    1. Single pane of glass gui
+    2. Discovery, inventory and topology,
+    3. Entire enterprise - lan wan and data center managment functions
+    4. Methods and protocols 0- uses snmp, ssh, telnet and cdp and lldp to discover and learn info about devices in the netwwork
+    5. lifcycle managment -supports installation, configuratioin, and monitoring
+    6. application visibility - simplifies qoS config
+    7. converged wired and wireless -manage wired and wireless on same platform
+    8. software image managment - (SWIM)  software images on network devices and automate dupdates
+    9. plug and play- performs initial installatin tasks for new network device so you can plug and play
+    
+ DNA center simililarities.
+  1.  
+  
+ DNA center differences
+  1. cisco DNA Center supports SDA where traditional does not
+  2. future features 
+  3. simplify work done by enterprises to reduce costs
+  4. eeasy QoS
+  5. Encrypted traffic analysis
+  6. device and client 360 degree view of health
+  7. network time travel
+  8. Path trace
+  
