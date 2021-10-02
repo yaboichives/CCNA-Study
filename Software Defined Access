@@ -1,0 +1,23 @@
+1. SDA Southbound
+  a. Overlay
+    i. VXLAN Tunnels in the Overlay (Data Plane) (Virtual Extensible LAN)
+      a. must happen on ASIC on each switch (specific hardware for fast routing)
+      b. VXLAN encapsulation suppplies header fields that SDA needs for it sfeatures.
+      c. The encapsulation does the entire data link frame so it can support layer 2 and layer 3
+  b. Underlay
+    i. uses a separate IP Address space  including the endpoint devices that send data over the SDA network. 
+  c. Fabric
+  
+  Nodes in SDA network do not work like traditional layer 2 switching and layer 3 routing
+  Here is one sequence.
+    a. Fabric Edge node learn the location of possible endpoints by using MAC AAddresses, individual IP Address and by subnet, idefntifying each endpoint with an EID (endpoint identifier
+    b. Fabric edge nodes register EID in a database called a LISP map server
+    c. LISP map server holds EIDs and Routing locators (RLOCs) which identify the fabric edge node that reach the EID
+    d. the fabric data plane will look for and find the desntiation in the LISP map server database when it need s to foward a message. 
+    
+  When new incoming frames arrive, the ingress tunnel router (ITR) - SDA node that receives frames from outside the SDA fabric - it needs help and does this
+    a. Switch does not knoww where to foward the frame
+    b. ingress node sends a message to the LISP map server
+    5. LISP map server looks in database
+    6. LISP map server contacts node listed as the RLOC 
+    7. RLOC node informs ingress node where to send the frame
